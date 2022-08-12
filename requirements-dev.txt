@@ -1,0 +1,9 @@
+build
+ipython
+ipdb
+pyright
+pycln
+isort
+black
+rich
+

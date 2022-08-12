@@ -1,0 +1,24 @@
+{
+    "exclude": [
+	"build/*",
+	"*~",
+	"dist/*",
+	"files/*",
+	".git/*",
+	"*.egg-info/*",
+	"venv/*"
+    ],
+    "executionEnvironments": [
+	{
+	"root": "."
+    }
+    ],
+    "verboseOutput": true,
+    "reportUnusedImport": "warning",
+    "reportUnusedVariable": "warning",
+    "reportDuplicateImport": "warning",
+    "reportConstantRedefinition": "warning",
+    "reportUnnecessaryComparison": "warning",
+    "reportAssertAlwaysTrue": "warning",
+    "reportUnusedExpression": false
+}
