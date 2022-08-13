@@ -22,8 +22,7 @@ x-superset-volumes: &superset-volumes
   # /app/pythonpath_docker will be appended to the PYTHONPATH in the final container
   - ./repo/docker:/app/docker
   - ./superset_home:/app/superset_home
-  - ./data:/data
-
+ 
 version: "3.7"
 services:
   redis:
@@ -49,7 +48,7 @@ services:
     user: "root"
     restart: unless-stopped
     ports:
-      - ${SUPERSET_PORT:-8088}:8088
+      - "${SUPERSET_PORT}:8088"
     depends_on: *superset-depends-on
     volumes: *superset-volumes
 
@@ -85,9 +84,11 @@ services:
   user_db:
     image: postgres
     ports:
-      - "${SUPERSET_USERDB_PORT:-5432}:5432"
+      - "${SUPERSET_USERDB_PORT}:5432"
     restart: always
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: db
+    volumes:
+     - ./data:/var/lib/postgresql/data

@@ -7,7 +7,7 @@ Export a hledger journal file to a postgresql database. The data will be ready t
 
 - Used postgresql instead of sqlite because it will have better support. Apache Superset doesn't support sqlite and has postgresql support built-in.
 - Convert transactions and posting tags to column to used them as chart dimension
-- Run it once or automatically every *x* minutes
+- Run it once or automatically *every x minutes*
 - Export locally or to a remote server using postgres connection
 
 ## Install
@@ -41,11 +41,11 @@ A *docker-compose.yml* is available with superset and a postgresql container to 
 
 ### Instructions
 
-1. On the repository *superset_docker*  directory, clone *Apache Superset* to the folder *repo*: `cd superset_docker && git clone https://github.com/apache/superset.git repo`
-1. If needed, edit the *superset_docker/.env* file with your prefered ports
-2. Start the containers: `cd superset_docker && docker-compose up -d`
-3. Open *Superset* on your browser with your server address and configured port in the *.env* file. Username and password are *admin*.
-4. Add exported tables to *Superset*. The database address is *user_db* and port is *5432*. Note you should your the database **internal port** and not the external. And remember to use the database **external port** when exporting using hledger2pysql 
+1. On the repository directory *superset_docker*, clone *Apache Superset* to the folder *repo*: `cd superset_docker && git clone https://github.com/apache/superset.git repo`
+2. If needed, edit the *superset_docker/.env* file with your prefered ports
+3. Start the containers: `cd superset_docker && docker-compose up -d`
+4. Wait some minutes, then open *Superset* on your browser with your server address and configured port in the *.env* file. Username and password are *admin*.
+5. Add exported tables to *Superset*. The database address is *user_db* and port is *5432*. Note you should use the database **internal port** and not the external. And remember to use the database **external port** when exporting using hledger2pysql 
 
 ### Tips
 
