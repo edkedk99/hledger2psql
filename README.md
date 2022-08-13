@@ -10,6 +10,13 @@ Export a hledger journal file to a postgresql database. The data will be ready t
 - Run it once or automatically *every x minutes*
 - Export locally or to a remote server using postgres connection
 
+## Comparison to built-in functionality
+
+Hledger can export to sql with the command `hledger -f data.journal print --output-format=sql` but it has some limitations:
+
+- It only output the sql command. This package send the command to the Postgresql
+- The main reason hledger built-in feature is not ideal is because it insert all transaction and comment tags in a *comment* column. Sql needs each tag in a different column so you can filter and group by each tag. Also it insert the payee and the notes in the same *description* column. Splitting them in two different columns also allows better filtering and grouping
+
 ## Install
 
 `pip install git+https://github.com/edkedk99/hledger2psql.git`
