@@ -42,7 +42,8 @@ from .hledger2psql import journal2df, save_db
 )
 def hledger2psql(file: str, db_url: str, table_name: str, interval: int):
     """
-    Export a hledger journal file to a postgresql only once or repeat in interval. Transaction and posting tags will be converted to table columns"""
+    Export a hledger journal file to a postgresql only once or repeat in interval. Transaction and posting tags will be converted to table columns
+    """
     if interval == 0:
         start = time.time()
         df = journal2df(file)

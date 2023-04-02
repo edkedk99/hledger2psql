@@ -7,7 +7,10 @@ from io import StringIO
 from typing import List, cast
 
 import pandas as pd
+from sqlalchemy import text
 from sqlalchemy.engine import create_engine
+
+
 
 
 def get_tag_item(comment: str):
@@ -66,7 +69,8 @@ def save_db(
 ) -> str:
     with create_engine(db_url).connect() as conn:
         df.to_sql(table_name, conn, if_exists="replace")
-        rows_query = conn.execute(f"select count(*) from {table_name}").fetchone()
+        command = text(f"select count(*) from {table_name}")
+        rows_query = conn.execute(command).fetchone()
 
     rows = int(rows_query[0]) if rows_query else 0
     now = datetime.now()
